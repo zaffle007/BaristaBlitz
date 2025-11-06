@@ -1,0 +1,416 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &624817685332357357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7504586327894251319}
+  - component: {fileID: 4826777776514048762}
+  - component: {fileID: 4580734273077820199}
+  - component: {fileID: 1611074767528199860}
+  - component: {fileID: 3921714415507321874}
+  m_Layer: 5
+  m_Name: Item2
+  m_TagString: OrderSlot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7504586327894251319
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624817685332357357}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3125905442081693610}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000014067, y: -28.5}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4826777776514048762
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624817685332357357}
+  m_CullTransparentMesh: 1
+--- !u!114 &4580734273077820199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624817685332357357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -7585170818726314320, guid: 8762ad03208788c4a91927b8306f01c3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1611074767528199860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624817685332357357}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b588f2ae50cd7d488c80f5d1b7c6580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectTransformTarget: {fileID: 0}
+  rectTransformTargetMILK: {fileID: 0}
+  rectTransformTarget3: {fileID: 0}
+  x: 0
+  y: 0
+  cup: {fileID: 0}
+  jug: {fileID: 0}
+  emptyCup: {fileID: 0}
+  espressoCup: {fileID: 0}
+  latteCup: {fileID: 0}
+  cappacinoCup: {fileID: 0}
+  hotchoco: {fileID: 0}
+  hotchocoCream: {fileID: 0}
+  hotchocoCreamMarshmellows: {fileID: 0}
+  hotchocoCreamSprinkles: {fileID: 0}
+  emptyJug: {fileID: 0}
+  milkyJug: {fileID: 0}
+  chocoJug: {fileID: 0}
+  chocoPowder: {fileID: 0}
+  ItemSlotID: Table
+  cupstate: 0
+  milkJugState: 0
+--- !u!114 &3921714415507321874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624817685332357357}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b8b937213faa448174fb40da17c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyLevel: Easy
+  orderSlot: {fileID: 0}
+  drink: {fileID: 0}
+  food: {fileID: 0}
+  ImagesDrinks: []
+  ImagesFood: []
+  Customers: []
+  customerIndex: 0
+  newCustomer: {fileID: 0}
+  positionY: 0
+--- !u!1 &5442070593763443562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3125905442081693610}
+  - component: {fileID: 8048723653072049355}
+  - component: {fileID: 2051042035926343670}
+  - component: {fileID: 2017527712992145404}
+  - component: {fileID: 3109010028455293339}
+  m_Layer: 5
+  m_Name: OrderSlot 1
+  m_TagString: OrderSlot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3125905442081693610
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5442070593763443562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6007594262672791679}
+  - {fileID: 7504586327894251319}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -40.0496, y: 66.91243}
+  m_SizeDelta: {x: 71.0009, y: 123.5744}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8048723653072049355
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5442070593763443562}
+  m_CullTransparentMesh: 1
+--- !u!114 &2051042035926343670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5442070593763443562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 5996695984278468760, guid: 83bc65c4bac088f42ba07e476b6ed4f1, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2017527712992145404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5442070593763443562}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b588f2ae50cd7d488c80f5d1b7c6580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectTransformTarget: {fileID: 0}
+  rectTransformTargetMILK: {fileID: 0}
+  rectTransformTarget3: {fileID: 0}
+  x: 0
+  y: 0
+  cup: {fileID: 0}
+  jug: {fileID: 0}
+  emptyCup: {fileID: 0}
+  espressoCup: {fileID: 0}
+  latteCup: {fileID: 0}
+  cappacinoCup: {fileID: 0}
+  hotchoco: {fileID: 0}
+  hotchocoCream: {fileID: 0}
+  hotchocoCreamMarshmellows: {fileID: 0}
+  hotchocoCreamSprinkles: {fileID: 0}
+  emptyJug: {fileID: 0}
+  milkyJug: {fileID: 0}
+  chocoJug: {fileID: 0}
+  chocoPowder: {fileID: 0}
+  ItemSlotID: Table
+  cupstate: 0
+  milkJugState: 0
+--- !u!114 &3109010028455293339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5442070593763443562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b8b937213faa448174fb40da17c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyLevel: Easy
+  orderSlot: {fileID: 0}
+  drink: {fileID: 7668200314383092764}
+  food: {fileID: 4580734273077820199}
+  ImagesDrinks:
+  - {fileID: 6340662988194236647, guid: d0de2664f01a65146a0876669acc5ba1, type: 3}
+  - {fileID: 996550823693121895, guid: b4ed0c000eb62104496f651d061988a4, type: 3}
+  - {fileID: 3803474164509484999, guid: 2a3ff7655b47ade459493e39e42e300b, type: 3}
+  - {fileID: -3356302069181093370, guid: 1d71dda9f0bff804ea5495069f586148, type: 3}
+  - {fileID: -2141895525926153404, guid: ca9ad60e3a3651b4794fc383348cf65e, type: 3}
+  - {fileID: 6809518677539183035, guid: 0272172e0d71d994d8cfe4f2d65380e8, type: 3}
+  ImagesFood:
+  - {fileID: 7221688296375273295, guid: f781908ceb6cd0f4293c69ca9c64aed9, type: 3}
+  - {fileID: -5484518271712173962, guid: 10e7e982d874a8c4aa140025a3e9a683, type: 3}
+  - {fileID: -2293632858495061478, guid: 37c355629ae38f343b31317fcf9cbf95, type: 3}
+  - {fileID: -1503882564325878390, guid: 13567831b77579c4685a202d50077807, type: 3}
+  - {fileID: -2189994660280691457, guid: 8ef7ec2bbab57024890f573ba809caf9, type: 3}
+  - {fileID: -86884601702343657, guid: 40d9a517aff20a54abb028935e53d0d9, type: 3}
+  - {fileID: 1366959428852085967, guid: a289af71a0f2f2d4582c9ced1d61d60e, type: 3}
+  Customers: []
+  customerIndex: 0
+  newCustomer: {fileID: 0}
+  positionY: 0
+--- !u!1 &7726922878756278591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6007594262672791679}
+  - component: {fileID: 5377003761690855083}
+  - component: {fileID: 7668200314383092764}
+  - component: {fileID: 6978167491424570483}
+  - component: {fileID: 3495339595578867191}
+  m_Layer: 5
+  m_Name: Item1
+  m_TagString: OrderSlot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6007594262672791679
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726922878756278591}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3125905442081693610}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000012636, y: 27.5}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5377003761690855083
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726922878756278591}
+  m_CullTransparentMesh: 1
+--- !u!114 &7668200314383092764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726922878756278591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -7585170818726314320, guid: 8762ad03208788c4a91927b8306f01c3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6978167491424570483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726922878756278591}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b588f2ae50cd7d488c80f5d1b7c6580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectTransformTarget: {fileID: 0}
+  rectTransformTargetMILK: {fileID: 0}
+  rectTransformTarget3: {fileID: 0}
+  x: 0
+  y: 0
+  cup: {fileID: 0}
+  jug: {fileID: 0}
+  emptyCup: {fileID: 0}
+  espressoCup: {fileID: 0}
+  latteCup: {fileID: 0}
+  cappacinoCup: {fileID: 0}
+  hotchoco: {fileID: 0}
+  hotchocoCream: {fileID: 0}
+  hotchocoCreamMarshmellows: {fileID: 0}
+  hotchocoCreamSprinkles: {fileID: 0}
+  emptyJug: {fileID: 0}
+  milkyJug: {fileID: 0}
+  chocoJug: {fileID: 0}
+  chocoPowder: {fileID: 0}
+  ItemSlotID: Table
+  cupstate: 0
+  milkJugState: 0
+--- !u!114 &3495339595578867191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7726922878756278591}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b8b937213faa448174fb40da17c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyLevel: Easy
+  orderSlot: {fileID: 0}
+  drink: {fileID: 7668200314383092764}
+  food: {fileID: 4580734273077820199}
+  ImagesDrinks: []
+  ImagesFood: []
+  Customers: []
+  customerIndex: 0
+  newCustomer: {fileID: 0}
+  positionY: 0

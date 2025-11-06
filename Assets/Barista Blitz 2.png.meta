@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: 31c3e207ff55e57429573947e82e2439
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2482196023081590053
+    second: Barista Blitz 2_0
+  - first:
+      213: 8841610636688971198
+    second: Barista Blitz 2_1
+  - first:
+      213: 8587992196401815361
+    second: Barista Blitz 2_2
+  - first:
+      213: -2212141803864915238
+    second: Barista Blitz 2_3
+  - first:
+      213: 5154849895190356733
+    second: Barista Blitz 2_4
+  - first:
+      213: 8168426031715773800
+    second: Barista Blitz 2_5
+  - first:
+      213: 8847562667828273335
+    second: Barista Blitz 2_6
+  - first:
+      213: 8267409920012949727
+    second: Barista Blitz 2_7
+  - first:
+      213: 7323915016814767909
+    second: Barista Blitz 2_8
+  - first:
+      213: -6276549039702737283
+    second: Barista Blitz 2_9
+  - first:
+      213: -7569212019496869203
+    second: Barista Blitz 2_10
+  - first:
+      213: 3407090781147036273
+    second: Barista Blitz 2_11
+  - first:
+      213: 4546488091766607340
+    second: Barista Blitz 2_12
+  - first:
+      213: 8931122366496818710
+    second: Barista Blitz 2_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Barista Blitz 2_0
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 171
+        width: 167
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd2a5554ed77d8dd0800000000000000
+      internalID: -2482196023081590053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_1
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 349
+        width: 51
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb5592a7706b3ba70800000000000000
+      internalID: 8841610636688971198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_2
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 171
+        width: 106
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14f5b58c66dae2770800000000000000
+      internalID: 8587992196401815361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_3
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 171
+        width: 167
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad207d3ffb4ec41e0800000000000000
+      internalID: -2212141803864915238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_4
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 171
+        width: 74
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df2e7490ba4b98740800000000000000
+      internalID: 5154849895190356733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_5
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 349
+        width: 51
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86de87a92341c5170800000000000000
+      internalID: 8168426031715773800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_6
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 171
+        width: 106
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b069e7be5bd8ca70800000000000000
+      internalID: 8847562667828273335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_7
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 169
+        width: 149
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd899e6058dbbb270800000000000000
+      internalID: 8267409920012949727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_8
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 171
+        width: 96
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52fa46e67e5c3a560800000000000000
+      internalID: 7323915016814767909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_9
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 171
+        width: 46
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7ef23927e735e8a0800000000000000
+      internalID: -6276549039702737283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_10
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 168
+        width: 142
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da2a54c85c1c4f690800000000000000
+      internalID: -7569212019496869203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_11
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 169
+        width: 149
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17af6cf830b684f20800000000000000
+      internalID: 3407090781147036273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_12
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 171
+        width: 46
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cedca45c4de581f30800000000000000
+      internalID: 4546488091766607340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barista Blitz 2_13
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 171
+        width: 133
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 616c6942978b1fb70800000000000000
+      internalID: 8931122366496818710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Barista Blitz 2_0: -2482196023081590053
+      Barista Blitz 2_1: 8841610636688971198
+      Barista Blitz 2_10: -7569212019496869203
+      Barista Blitz 2_11: 3407090781147036273
+      Barista Blitz 2_12: 4546488091766607340
+      Barista Blitz 2_13: 8931122366496818710
+      Barista Blitz 2_2: 8587992196401815361
+      Barista Blitz 2_3: -2212141803864915238
+      Barista Blitz 2_4: 5154849895190356733
+      Barista Blitz 2_5: 8168426031715773800
+      Barista Blitz 2_6: 8847562667828273335
+      Barista Blitz 2_7: 8267409920012949727
+      Barista Blitz 2_8: 7323915016814767909
+      Barista Blitz 2_9: -6276549039702737283
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
