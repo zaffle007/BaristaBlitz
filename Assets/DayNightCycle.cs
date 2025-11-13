@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class DayNightCycle : MonoBehaviour
 {
@@ -34,9 +35,9 @@ public class DayNightCycle : MonoBehaviour
     {
         seconds += Time.fixedDeltaTime * tick;
 
-        if (GameStateManager.Instance.maxCustomersReached == true && hours <17)
+        if (GameStateManager.endLevel == true && hours <18)
         {
-            hours = 17;
+            hours = 18;
             mins = 0;
         }
 
@@ -62,19 +63,14 @@ public class DayNightCycle : MonoBehaviour
 
     public void ControlPPV()
     {
-        if (hours >= 18 && hours < 20)
-        {
-            ppv.weight = (float)mins / 60;
-
-
-        }
+        
 
         if (hours >= 0 && hours < 7) // Dawn at 6:00 / 6am    -   until 7:00 / 7am
         {
             ppv.weight = 1 - (float)mins / 60; // we minus 1 because we want it to go from 1 - 0
         }
 
-        if (hours >= 7 && hours < 19)
+        if (hours >= 7 && hours < 18)
         {
             closedShutters.SetActive(false);
             openShutters.SetActive(true);
@@ -84,11 +80,21 @@ public class DayNightCycle : MonoBehaviour
             //Debug.Log("day and night code" + GameStateManager.Instance.iscafeOpen);
             return;
         }
+        if (hours >= 18 && hours < 19)
+        {
+            ppv.weight = (float)mins / 60;
+            tick = 10000;
+        }
         else
         {
             openShutters.SetActive(false);
             closedShutters.SetActive(true);
             GameStateManager.Instance.iscafeOpen = false;
+
+            if (hours >= 19)
+            {
+                SceneManager.LoadScene(2);
+            }
             return;
         }
 

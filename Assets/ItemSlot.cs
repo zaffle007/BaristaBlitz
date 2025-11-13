@@ -46,10 +46,10 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
     //used from https://www.w3schools.com/cs/cs_enums.php
     //enum to track the state of the cup
-    public enum CupState { Empty, Espresso, Latte, Cappacino, HotChoco, ChocoCream, ChocoMarshmellow, ChocoSprinkles }
+
     public enum MilkJugState {NoMilk, Milky, Choco}
 
-    public CupState cupstate = CupState.Empty;
+
     public MilkJugState milkJugState = MilkJugState.NoMilk;
 
     void Start()
@@ -87,7 +87,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 Debug.Log("The item on the coffee machine is a cup");
 
                 //checking if the cup is empty
-                if (droppedSlot.cupstate == CupState.Empty)
+                if (GameStateManager.Instance.cupstate == GameStateManager.CupState.Empty)
                 {
 
                     Debug.Log("The cup on the coffee machine is empty and is changing to an espresso");
@@ -96,9 +96,9 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                     {
                         rectTransformTarget.anchoredPosition = new Vector2(x, y);  //-330 10
                         //changing the cup item slot's enum to update the cup state
-                        droppedSlot.cup.sprite = droppedSlot.espressoCup; //changing the empty cup to be an espresso
-                        droppedSlot.cupstate = CupState.Espresso; //changing the enum to be an espresso
-                        Debug.Log("cups state is " + droppedSlot.cupstate);
+                        cup.sprite = droppedSlot.espressoCup; //changing the empty cup to be an espresso
+                        GameStateManager.Instance.cupstate = GameStateManager.CupState.espresso_0; //changing the enum to be an espresso
+                        Debug.Log("cups state is " + GameStateManager.Instance.cupstate);
                     }
                     return;
                 }
@@ -156,22 +156,22 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 Debug.Log("Milk jug has been placed ontop of the cup" + droppedSlot.milkJugState);
 
                 //checking if the state of the cup's item slot's enum is an espresso
-                if (cupstate == CupState.Espresso && droppedSlot.milkJugState == MilkJugState.Milky)
+                if (GameStateManager.Instance.cupstate == GameStateManager.CupState.espresso_0 && droppedSlot.milkJugState == MilkJugState.Milky)
                 {
                     //changes the espresso to be a latte
                     cup.sprite = latteCup;
                     //updates the enum to be a latte
-                    cupstate = CupState.Latte;
+                    GameStateManager.Instance.cupstate = GameStateManager.CupState.latte_0;
                     jug.sprite = emptyJug;
                     milkJugState = MilkJugState.NoMilk;
                     droppedSlot.milkJugState = MilkJugState.NoMilk;
                     Debug.Log(milkJugState + " " + droppedSlot.milkJugState);
                     Debug.Log("Cup is changing to a latte");
                 }
-                else if (cupstate == CupState.Empty && droppedSlot.milkJugState == MilkJugState.Choco)
+                else if (GameStateManager.Instance.cupstate == GameStateManager.CupState.Empty && droppedSlot.milkJugState == MilkJugState.Choco)
                 {
                     cup.sprite = hotchoco;
-                    cupstate = CupState.HotChoco;
+                    GameStateManager.Instance.cupstate = GameStateManager.CupState.HotChoco;
                     jug.sprite = emptyJug;
                     milkJugState = MilkJugState.NoMilk;
                     droppedSlot.milkJugState = MilkJugState.NoMilk;
@@ -186,28 +186,28 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             }
             else if (dropped.CompareTag("CocoaPowder"))
             {
-                if (cupstate == CupState.Latte)
+                if (GameStateManager.Instance.cupstate == GameStateManager.CupState.latte_0)
                 {
                     cup.sprite = cappacinoCup;
-                    cupstate = CupState.Cappacino;
+                    GameStateManager.Instance.cupstate = GameStateManager.CupState.cappacino_0;
                     Debug.Log("Cup is now a cappacino");
                 }
             }
             else if (dropped.CompareTag("WhippedCream"))
             {
-                if (cupstate == CupState.HotChoco)
+                if (GameStateManager.Instance.cupstate == GameStateManager.CupState.HotChoco)
                 {
                     cup.sprite = hotchocoCream;
-                    cupstate = CupState.ChocoCream;
+                    GameStateManager.Instance.cupstate = GameStateManager.CupState.cream_0;
                     Debug.Log("Hot chocolate and cream");
                 }
             }
             else if (dropped.CompareTag("Marshmellows"))
             {
-                if (cupstate == CupState.ChocoCream)
+                if (GameStateManager.Instance.cupstate == GameStateManager.CupState.cream_0)
                 {
                     cup.sprite = hotchocoCreamMarshmellows;
-                    cupstate = CupState.ChocoMarshmellow;
+                    GameStateManager.Instance.cupstate = GameStateManager.CupState.marshmellowsChoco_0;
                     Debug.Log("Hot chocolate and marshmellows");
                 }
                 else
@@ -217,10 +217,10 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             }
             else if (dropped.CompareTag("Sprinkles"))
             {
-                if (cupstate == CupState.ChocoCream)
+                if (GameStateManager.Instance.cupstate == GameStateManager.CupState.cream_0)
                 {
                     cup.sprite = hotchocoCreamSprinkles;
-                    cupstate = CupState.ChocoSprinkles;
+                    GameStateManager.Instance.cupstate = GameStateManager.CupState.chocoSprinkles_0;
                     Debug.Log("Hot chocolate and sprinkles");
                 }
                 else
@@ -239,10 +239,10 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             if (dropped.CompareTag("Empty"))
             {
                 //checking if the cup is an espresso or a latte 
-                if (droppedSlot.cupstate == CupState.Espresso || droppedSlot.cupstate == CupState.Latte || droppedSlot.cupstate == CupState.Cappacino || droppedSlot.cupstate == CupState.HotChoco || droppedSlot.cupstate == CupState.ChocoCream || droppedSlot.cupstate == CupState.ChocoMarshmellow || droppedSlot.cupstate == CupState.ChocoSprinkles)
+                if (GameStateManager.Instance.cupstate == GameStateManager.CupState.espresso_0 || GameStateManager.Instance.cupstate == GameStateManager.CupState.latte_0 || GameStateManager.Instance.cupstate == GameStateManager.CupState.cappacino_0 || GameStateManager.Instance.cupstate == GameStateManager.CupState.HotChoco || GameStateManager.Instance.cupstate == GameStateManager.CupState.cream_0 || GameStateManager.Instance.cupstate == GameStateManager.CupState.marshmellowsChoco_0 || GameStateManager.Instance.cupstate == GameStateManager.CupState.chocoSprinkles_0)
                 {
-                    droppedSlot.cup.sprite = droppedSlot.emptyCup; //changing the cup to look empty
-                    droppedSlot.cupstate = CupState.Empty; //changing the cupstate enum to be back to empty
+                    cup.sprite = droppedSlot.emptyCup; //changing the cup to look empty
+                    GameStateManager.Instance.cupstate = GameStateManager.CupState.Empty; //changing the cupstate enum to be back to empty
 
                     Debug.Log("Cup is back to being empty.");
                 }

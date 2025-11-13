@@ -2,19 +2,25 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using NUnit.Framework.Constraints;
+using System.Threading;
 
 
 
 public class CustomerScript : MonoBehaviour, IDropHandler
 {
+
+    private GameStateManager gsm;
     //checks what difficulty the game is
-    public string difficultyLevel;
+    
 
     //gets the order slots and the food/drink order places
     public GameObject orderSlot1;
     public GameObject orderSlot2;
     public GameObject orderSlot3;
     public GameObject orderSlot4;
+
+    public GameObject[] orderSlots;
 
     public Image PositionDrinks;
     public Image PositionFood;
@@ -29,9 +35,9 @@ public class CustomerScript : MonoBehaviour, IDropHandler
     public Image Position3Food;
 
     public Image Position4Drinks;
-    public RectTransform Position4Food;
+    public Image Position4Food;
 
-    [SerializeField] GameObject completedOrderIcon;
+    [SerializeField] GameObject tickPrefab;
 
 
     //arrays the hold the different order options, when the orders are chosen they are randomised from the arrays
@@ -51,11 +57,6 @@ public class CustomerScript : MonoBehaviour, IDropHandler
     //GameObject variable to store the spawned in customer
     private GameObject newCustomer;
 
-    //bools to check if a customer is in one of the locations as only 1 customer can be in one slot at one time
-    private bool customerArrivedPosiiton0 = false;
-    private bool customerArrivedPosiiton1 = false;
-    private bool customerArrivedPosiiton2 = false;
-    private bool customerArrivedPosiiton3 = false;
 
     //sets the y position from the inspector where the characters are spawned at
     public int positionY;
@@ -79,7 +80,7 @@ public class CustomerScript : MonoBehaviour, IDropHandler
     public float m_remainingSpawnTimer = 0f;
 
     //the maximum number of customers
-    private int maxCustomersSpawned = 4;
+    
 
     //counter to keep track of how many customers have been spawned in
     private int customersSpawned = 0;
@@ -88,9 +89,10 @@ public class CustomerScript : MonoBehaviour, IDropHandler
     public string orderLocationID;
 
     //stores the order choice
-    string orderChoice = "none";
+    string orderDrinkChoice = "none";
+    string orderFoodChoice = "none";
 
-    
+
 
 
     public int MyIndexFood;
@@ -99,18 +101,35 @@ public class CustomerScript : MonoBehaviour, IDropHandler
     public Image[] foodPositions;
     public Image[] drinkPositions;
 
-    public RectTransform rectTransformTarget;
+ 
 
-    public static float xCoordinate;
-    public static float yCoordinate;
+    public GameObject foodTick1;
+    public GameObject foodTick2;
+    public GameObject foodTick3;
+    public GameObject foodTick4;
 
-    [SerializeField] public static Transform canvasParent; // Reference to the Canvas or a child panel
+    public GameObject drinkTick1;
+    public GameObject drinkTick2;
+    public GameObject drinkTick3;
+    public GameObject drinkTick4;
 
-    [SerializeField] public GameObject [] tickLocation;
 
-    public static bool foodCompleted;
-    
+    public GameObject[] drinkTicks;
+    public GameObject[] foodTicks;
 
+    static GameObject[] spawnedCustomers = {null, null, null, null};
+
+
+    public GameObject[] coins;
+
+    public CustomerTimer[] timerBars;
+
+    void Start()
+    {
+        gsm = GameObject.Find("GameState").GetComponent<GameStateManager>();
+        Debug.Log("Level = " + GameStateManager.level);
+
+    }
 
     void Update()
     {
@@ -118,7 +137,7 @@ public class CustomerScript : MonoBehaviour, IDropHandler
         if (GameStateManager.Instance.iscafeOpen)
         {
             //makes sure the customers hasnt exceeded the maximum number
-            if (customersSpawned < maxCustomersSpawned)
+            if (customersSpawned < GameStateManager.Instance.maxCustomersSpawned)
             {
                 //makes the customers visible on screen 
                 //code from https://docs.unity3d.com/560/Documentation/ScriptReference/Renderer-material.html
@@ -141,6 +160,31 @@ public class CustomerScript : MonoBehaviour, IDropHandler
             {
                 //converts the bool to true if the maximum number of customers has been reached
                 GameStateManager.Instance.maxCustomersReached = true;
+                Debug.Log("LAST CUSTOMER");
+                GameStateManager.Instance.lastCustomerArrived = true;
+
+                if (GameStateManager.Instance.lastCustomerArrived)
+                {
+                    bool allNull = true;
+
+                        foreach (GameObject customer in spawnedCustomers)
+                        {
+                            if (customer != null)
+                            {
+                                allNull = false;
+                                break; // stop checking once we find a non-null element
+                            }
+                        }
+
+                        if (allNull)
+                        {
+                            Debug.Log("All customers are null.");
+                        }
+                        else
+                        {
+                            Debug.Log("At least one customer exists.");
+                        }
+                }
                 return;
             }
         }
@@ -174,6 +218,37 @@ public class CustomerScript : MonoBehaviour, IDropHandler
         positionXIndex = Random.Range(0, positionX.Length);
         randomPositionX = positionX[positionXIndex];
 
+        if (GameStateManager.Instance.customerArrivedPositions[positionXIndex])
+        {
+            Debug.Log("customer is already there");
+            return;
+        }
+        else
+        {
+            //spawns in a new customer
+            GameObject spawnedCustomer = Instantiate(newCustomer, new Vector2(randomPositionX, positionY), Quaternion.identity);
+            customersSpawned++; //adds 1 to the counter to track the number of customers
+            GameStateManager.Instance.customerArrivedPositions[positionXIndex] = true; //ensures no other customers can spawn in that position
+                                                             //orderSlot1.SetActive(true); //makes their order slot visible
+            orderSlots[positionXIndex].SetActive(true);
+            PositionDrinks = drinkPositions[positionXIndex]; //access the slots for the drink and food order to go
+            PositionFood = foodPositions[positionXIndex];
+            Order(); //activates the order fuction
+
+
+        
+            Debug.Log("Customer + " + newCustomer);
+            Debug.Log("positoin + " + positionXIndex);
+            spawnedCustomers[positionXIndex] = spawnedCustomer;
+
+            for (int i = 0; i < spawnedCustomers.Length; i++)
+            {
+                Debug.Log("ZOEOOEOEOE + " + spawnedCustomers[i] + positionXIndex);
+            }
+        }
+
+        
+/*
         //checks what position has been chosen and makes sure a customer isnt already in that position
         if (positionXIndex == 0)
         {
@@ -187,7 +262,8 @@ public class CustomerScript : MonoBehaviour, IDropHandler
                 Instantiate(newCustomer, new Vector2(randomPositionX, positionY), Quaternion.identity);
                 customersSpawned++; //adds 1 to the counter to track the number of customers
                 customerArrivedPosiiton0 = true; //ensures no other customers can spawn in that position
-                orderSlot1.SetActive(true); //makes their order slot visible
+                //orderSlot1.SetActive(true); //makes their order slot visible
+                orderSlots[positionXIndex].SetActive(true);
                 PositionDrinks = drinkPositions[positionXIndex]; //access the slots for the drink and food order to go
                 PositionFood = foodPositions[positionXIndex];
                 Order(); //activates the order fuction
@@ -205,7 +281,7 @@ public class CustomerScript : MonoBehaviour, IDropHandler
                 Instantiate(newCustomer, new Vector2(randomPositionX, positionY), Quaternion.identity);
                 customersSpawned++; //adds 1 to the counter to track the number of customers
                 customerArrivedPosiiton1 = true; //ensures no other customers can spawn in that position
-                orderSlot2.SetActive(true); //makes their order slot visible
+                orderSlots[positionXIndex].SetActive(true); //makes their order slot visible
                 PositionDrinks = drinkPositions[positionXIndex]; //access the slots for the drink and food order to go
                 PositionFood = foodPositions[positionXIndex];
                 Order(); //activates the order fuction
@@ -223,7 +299,7 @@ public class CustomerScript : MonoBehaviour, IDropHandler
                 Instantiate(newCustomer, new Vector2(randomPositionX, positionY), Quaternion.identity);
                 customersSpawned++; //adds 1 to the counter to track the number of customers
                 customerArrivedPosiiton2 = true; //ensures no other customers can spawn in that position
-                orderSlot3.SetActive(true); //makes their order slot visible
+                orderSlots[positionXIndex].SetActive(true); //makes their order slot visible
                 PositionDrinks = drinkPositions[positionXIndex]; //access the slots for the drink and food order to go
                 PositionFood = foodPositions[positionXIndex];
                 Order(); //activates the order fuction
@@ -241,56 +317,63 @@ public class CustomerScript : MonoBehaviour, IDropHandler
                 Instantiate(newCustomer, new Vector2(randomPositionX, positionY), Quaternion.identity);
                 customersSpawned++; //adds 1 to the counter to track the number of customers
                 customerArrivedPosiiton3 = true; //ensures no other customers can spawn in that position
-                orderSlot4.SetActive(true); //makes their order slot visible
+                orderSlots[positionXIndex].SetActive(true); //makes their order slot visible
                 PositionDrinks = drinkPositions[positionXIndex]; //access the slots for the drink and food order to go
                 PositionFood = foodPositions[positionXIndex];
                 Order(); //activates the order fuction
             }
-        }
-
+        }*/
+        
     }
 
 
     Image Order()
     {
         //checks what the level difficulty is
-        if (difficultyLevel == "Easy") //just coffees and simple sandwiches (only picks the first 3 option of the drink and food arrray)
+        if (GameStateManager.level == 0) //just coffees and simple sandwiches (only picks the first 3 option of the drink and food arrray)
         {
             int MyIndexDrinks = Random.Range(0, Mathf.Min(Drinks.Length, 3)); //https://discussions.unity.com/t/picking-a-random-object-from-an-array/398804
             MyIndexFood = Random.Range(0, Mathf.Min(Food.Length, 3));
             //changes the empty box to the item ordered
             PositionDrinks.sprite = ImagesDrinks[MyIndexDrinks];
             PositionFood.sprite = ImagesFood[MyIndexFood];
-            orderChoice = ImagesFood[MyIndexFood].name;
-            GameStateManager.Instance.customerOrders[positionXIndex] = orderChoice; //updates the order array in the GameStateManager to what has been ordered in that position
-            
+            orderDrinkChoice = ImagesDrinks[MyIndexDrinks].name;
+            orderFoodChoice = ImagesFood[MyIndexFood].name;
+            GameStateManager.Instance.customerDrinkOrders[positionXIndex] = orderDrinkChoice; //updates the order array in the GameStateManager to what has been ordered in that position
+            GameStateManager.Instance.customerFoodOrders[positionXIndex] = orderFoodChoice; //updates the order array in the GameStateManager to what has been ordered in that position
+
         }
-        else if (difficultyLevel == "Medium")//all drinks and sandwiches
+        else if (GameStateManager.level == 1)//all drinks and sandwiches
         {
             int MyIndexDrinks = Random.Range(0, Drinks.Length); //https://discussions.unity.com/t/picking-a-random-object-from-an-array/398804
             int MyIndexFood = Random.Range(0, Food.Length);
             //changes the empty box to the item ordered
             PositionDrinks.sprite = ImagesDrinks[MyIndexDrinks];
             PositionFood.sprite = ImagesFood[MyIndexFood];
-            orderChoice = ImagesFood[MyIndexFood].name;
-            GameStateManager.Instance.customerOrders[positionXIndex] = orderChoice; //updates the order array in the GameStateManager to what has been ordered in that position
-            
-            
+            orderDrinkChoice = ImagesDrinks[MyIndexDrinks].name;
+            orderFoodChoice = ImagesFood[MyIndexFood].name;
+            GameStateManager.Instance.customerDrinkOrders[positionXIndex] = orderDrinkChoice; //updates the order array in the GameStateManager to what has been ordered in that position
+            GameStateManager.Instance.customerFoodOrders[positionXIndex] = orderFoodChoice; //updates the order array in the GameStateManager to what has been ordered in that position
+
+
 
 
         }
-        else if (difficultyLevel == "Hard")//multiple orders of drinks and food
+        else if (GameStateManager.level == 2)//multiple orders of drinks and food
         {
             int MyIndexDrinks = Random.Range(0, 2); //https://discussions.unity.com/t/picking-a-random-object-from-an-array/398804
             int MyIndexFood = Random.Range(0, 2);
             //changes the empty box to the item ordered
             PositionDrinks.sprite = ImagesDrinks[MyIndexDrinks];
             PositionFood.sprite = ImagesFood[MyIndexFood];
-            orderChoice = ImagesFood[MyIndexFood].name;
-            GameStateManager.Instance.customerOrders[positionXIndex] = orderChoice; //updates the order array in the GameStateManager to what has been ordered in that position
-            
+            orderDrinkChoice = ImagesDrinks[MyIndexDrinks].name;
+            orderFoodChoice = ImagesFood[MyIndexFood].name;
+            GameStateManager.Instance.customerDrinkOrders[positionXIndex] = orderDrinkChoice; //updates the order array in the GameStateManager to what has been ordered in that position
+            GameStateManager.Instance.customerFoodOrders[positionXIndex] = orderFoodChoice; //updates the order array in the GameStateManager to what has been ordered in that position
+
         }
         return PositionFood;
+        
     }
 
 
@@ -307,135 +390,180 @@ public class CustomerScript : MonoBehaviour, IDropHandler
 
         //variable stores what sandwich has been made by checking the sandwich state 
         string sandwichToBeGiven = GameStateManager.Instance.sandwichState.ToString();
-
-
-        Vector2 dropPosition = eventData.position;
-
-        Debug.Log("Item dropped at Screen X: " + dropPosition.x + ", Screen Y: " + dropPosition.y);
-
-        // You can access X and Y individually:
-        xCoordinate = dropPosition.x;
-        yCoordinate = dropPosition.y;
-
+        string drinkToBeGiven = GameStateManager.Instance.cupstate.ToString();
 
         //checks where the item has been dropped and checks the item dropped matches the ordered item
         if (orderLocationID == "OrderSlot1" || orderLocationID == "position1Drink" || orderLocationID == "position1Food")
         {
 
-            if (sandwichToBeGiven == GameStateManager.Instance.customerOrders[0])
+            if (sandwichToBeGiven == GameStateManager.Instance.customerFoodOrders[0])
             {
                 Debug.Log("Correct sandwich dropped: " + sandwichToBeGiven);
                 dropped.SetActive(false); //makes the dropped item invisible
-                bool orderFinshed = true;
-                OrderCompleted(orderFinshed);
-                GameStateManager.Instance.customerOrders[0] = null;
+                //bool orderFinshed = true;
+                foodTicks[0].SetActive(true);
+                GameStateManager.Instance.customerFoodOrders[0] = null;
+
             }
             else
             {
-                Debug.Log("Incorrect sandwich! You gave a " + sandwichToBeGiven + " They would like a " + GameStateManager.Instance.customerOrders[0]);
+                Debug.Log("Incorrect sandwich! You gave a " + sandwichToBeGiven + " They would like a " + GameStateManager.Instance.customerFoodOrders[0]);
+
             }
+            if (drinkToBeGiven == GameStateManager.Instance.customerDrinkOrders[0])
+            {
+                Debug.Log("Correct drink dropped: " + drinkToBeGiven);
+                dropped.SetActive(false); //makes the dropped item invisible
+                //bool orderFinshed = true;
+                drinkTicks[0].SetActive(true);
+                GameStateManager.Instance.customerFoodOrders[0] = null;
+            }
+            else
+            {
+                Debug.Log("Incorrect drink! You gave a " + drinkToBeGiven + " They would like a " + GameStateManager.Instance.customerDrinkOrders[0]);
+            }
+            int coinsX = 0;
+            StartCoroutine(OrderCompleted(coinsX));
+
         }
 
         //checks where the item has been dropped and checks the item dropped matches the ordered item
         else if (orderLocationID == "OrderSlot2" || orderLocationID == "position2Drink" || orderLocationID == "position2Food")
         {
 
-            if (sandwichToBeGiven == GameStateManager.Instance.customerOrders[1])
+            if (sandwichToBeGiven == GameStateManager.Instance.customerFoodOrders[1])
             {
                 Debug.Log("Correct sandwich dropped: " + sandwichToBeGiven);
                 dropped.SetActive(false);//makes the dropped item invisible
                 //Position1Food.sprite = originalOrderSlot2;
                 //Destroy(gameObject);
-                bool orderFinshed = true;
-                OrderCompleted(orderFinshed);
-                GameStateManager.Instance.customerOrders[1] = null;
+                //bool orderFinshed = true;
+                foodTicks[1].SetActive(true);
+                GameStateManager.Instance.customerFoodOrders[1] = null;
+
             }
             else
             {
-                Debug.Log("Incorrect sandwich! You gave a " + sandwichToBeGiven + " They would like a " + GameStateManager.Instance.customerOrders[1]);
+                Debug.Log("Incorrect sandwich! You gave a " + sandwichToBeGiven + " They would like a " + GameStateManager.Instance.customerFoodOrders[1]);
             }
+
+            if (drinkToBeGiven == GameStateManager.Instance.customerDrinkOrders[1])
+            {
+                Debug.Log("Correct drink dropped: " + drinkToBeGiven);
+                dropped.SetActive(false); //makes the dropped item invisible
+                //bool orderFinshed = true;
+                drinkTicks[1].SetActive(true);
+                //OrderCompleted();
+                GameStateManager.Instance.customerFoodOrders[1] = null;
+            }
+            else
+            {
+                Debug.Log("Incorrect drink! You gave a " + drinkToBeGiven + " They would like a " + GameStateManager.Instance.customerDrinkOrders[1]);
+            }
+            int coinsX = 1;
+            StartCoroutine(OrderCompleted(coinsX));
+
         }
 
         //checks where the item has been dropped and checks the item dropped matches the ordered item
         else if (orderLocationID == "OrderSlot3" || orderLocationID == "position3Drink" || orderLocationID == "position3Food")
         {
 
-            if (sandwichToBeGiven == GameStateManager.Instance.customerOrders[2])
+            if (sandwichToBeGiven == GameStateManager.Instance.customerFoodOrders[2])
             {
                 Debug.Log("Correct sandwich dropped: " + sandwichToBeGiven);
                 dropped.SetActive(false);//makes the dropped item invisible
 
-                bool orderFinshed = true;
-                OrderCompleted(orderFinshed);
-                GameStateManager.Instance.customerOrders[2] = null;
+                //bool orderFinshed = true;
+                foodTicks[2].SetActive(true);
+                GameStateManager.Instance.customerFoodOrders[2] = null;
+
             }
             else
             {
-                Debug.Log("Incorrect sandwich! You gave a " + sandwichToBeGiven + " They would like a " + GameStateManager.Instance.customerOrders[2]);
+                Debug.Log("Incorrect sandwich! You gave a " + sandwichToBeGiven + " They would like a " + GameStateManager.Instance.customerFoodOrders[2]);
             }
+
+            if (drinkToBeGiven == GameStateManager.Instance.customerDrinkOrders[2])
+            {
+                Debug.Log("Correct drink dropped: " + drinkToBeGiven);
+                dropped.SetActive(false); //makes the dropped item invisible
+                //bool orderFinshed = true;
+                drinkTicks[2].SetActive(true);
+                GameStateManager.Instance.customerFoodOrders[2] = null;
+            }
+            else
+            {
+                Debug.Log("Incorrect drink! You gave a " + drinkToBeGiven + " They would like a " + GameStateManager.Instance.customerDrinkOrders[2]);
+            }
+            int coinsX = 2;
+            StartCoroutine(OrderCompleted(coinsX));
         }
 
         //checks where the item has been dropped and checks the item dropped matches the ordered item
         else if (orderLocationID == "OrderSlot4" || orderLocationID == "positsion4Drink" || orderLocationID == "position4Food")
         {
 
-            if (sandwichToBeGiven == GameStateManager.Instance.customerOrders[3])
+            if (sandwichToBeGiven == GameStateManager.Instance.customerFoodOrders[3])
             {
                 Debug.Log("Correct sandwich dropped: " + sandwichToBeGiven);
                 dropped.SetActive(false);//makes the dropped item invisible
 
-                bool orderFinshed = true;
-                foodCompleted = true;
-                StartCoroutine(Border(orderFinshed));
-                GameStateManager.Instance.customerOrders[3] = null;
+                //bool orderFinshed = true;
+                foodTicks[3].SetActive(true);
+                GameStateManager.Instance.customerFoodOrders[3] = null;
+
 
             }
             else
             {
-                Debug.Log("Incorrect sandwich! You gave a " + sandwichToBeGiven + " They would like a " + GameStateManager.Instance.customerOrders[3]);
+                Debug.Log("Incorrect sandwich! You gave a " + sandwichToBeGiven + " They would like a " + GameStateManager.Instance.customerFoodOrders[3]);
             }
-        }
-    }
 
-    void OrderCompleted(bool orderFinshed)
-    {
-        Debug.Log("order completed + " + orderFinshed);
-
-        if (orderFinshed)
-        {
-            //Destroy(gameObject);
-            completedOrderIcon.SetActive(true);
-        }
-    }
-    
-    //https://discussions.unity.com/t/make-an-object-sprite-appear-and-disappear/771739/5
-    IEnumerator Border(bool orderFinished)
-    {
-        if (orderFinished)
-        {
-            if(foodCompleted == true)
+            if (drinkToBeGiven == GameStateManager.Instance.customerDrinkOrders[3])
             {
-                Debug.Log("food completed ");
-                Debug.Log("x position + " + positionXIndex);
-                Debug.Log("hi + " + tickLocation[3].name);
-                tickLocation[3].SetActive(true);
-                yield return new WaitForSeconds(20f);
+                Debug.Log("Correct drink dropped: " + drinkToBeGiven);
+                dropped.SetActive(false); //makes the dropped item invisible
+                //bool orderFinshed = true;
+                drinkTicks[3].SetActive(true);
+                GameStateManager.Instance.customerFoodOrders[3] = null;
             }
-            /*
-            Debug.Log("x position + " + randomPositionX + positionY);
+            else
+            {
+                Debug.Log("Incorrect drink! You gave a " + drinkToBeGiven + " They would like a " + GameStateManager.Instance.customerDrinkOrders[3]);
+            }
+            int coinsX = 3;
+            StartCoroutine(OrderCompleted(coinsX));
             
-            //completedOrderIcon.SetActive(true);
-
-
-            Vector3 currentPosition = Position4Food.transform.position;
-            float xPosition = transform.position.x;
-            float yPosition = transform.position.y;
-            Debug.Log("POSITION 4 FOOD POSITION: " + xCoordinate + " " + yCoordinate);
-            Instantiate(completedOrderIcon, new Vector2(0, 0), Quaternion.identity);
-            completedOrderIcon.transform.SetParent(canvasParent, false);
-
-            yield return new WaitForSeconds(20f);
-            //completedOrderIcon.SetActive(false);*/
         }
     }
-}
+
+    IEnumerator OrderCompleted(int coinsX)
+    {
+        //code is taken from https://docs.unity3d.com/ScriptReference/GameObject-activeSelf.html
+        if(foodTicks[coinsX].activeSelf && drinkTicks[coinsX].activeSelf)
+            {
+                bool order4completed = true;
+            Debug.Log("Order 4 is completed + " + order4completed + positionXIndex);
+            gsm.customerServed(1);
+            yield return new WaitForSeconds(1);
+            Debug.Log("YOOOOOOOOOO + " + coins[coinsX]);
+            coins[coinsX].SetActive(true);
+            gameObject.SetActive(false);
+            foodTicks[coinsX].SetActive(false);
+            drinkTicks[coinsX].SetActive(false);
+            Debug.Log("CAKKEEEE + " + spawnedCustomers[coinsX]);
+            Destroy(spawnedCustomers[coinsX]);
+            //Debug.Log("YOOOOOOOOOO" + spawnedCustomers[coinsX]);
+            Debug.Log("CUSTOMER WAS DESTROYED AT POSITION + " + coinsX);
+            
+
+            }
+    
+
+        }
+    }
+
+
+        
+    

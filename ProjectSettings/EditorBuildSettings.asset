@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelCompleted.unity
     guid: 43ba9de4f53eaed42a7295d2a76841b1
+  - enabled: 1
+    path: Assets/Scenes/FailedLevel.unity
+    guid: 793428f55be1d6747b2ac1536b8dfb65
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
