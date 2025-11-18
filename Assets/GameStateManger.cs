@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class GameStateManager : MonoBehaviour
     public bool orderFinshed;
 
     //the coins collected
-    private static int score;
+    public static int score;
 
     //tracks how many customers have been served
     public static int numCustomerServed;
@@ -75,7 +76,18 @@ public class GameStateManager : MonoBehaviour
     public GameObject tomatoPadlock;
     public GameObject lettucePadlock;
 
-    
+    public int testingCustomers;
+/*
+    void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+
+        if (FindObjectsOfType(this.GetType()).Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+    }*/
     //sets values to some of the variables 
     public GameStateManager()
     {
@@ -89,7 +101,7 @@ public class GameStateManager : MonoBehaviour
         customerArrivedPositions = new bool[] { false, false, false, false };
         lastCustomerArrived = false;
         lastCustomerServed = false;
-        level = 1;
+        level = 0;
     }
 
     static GameStateManager()
@@ -121,6 +133,7 @@ public class GameStateManager : MonoBehaviour
         numCustomerServed += served;
         Debug.Log("numbers of customers served " + numCustomerServed);
         customerCount.text = numCustomerServed + "/" + maxCustomersSpawned;
+        testingCustomers += testingCustomers;
     }
 
     //checks if the level has been finsihed

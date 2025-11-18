@@ -204,6 +204,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -765,6 +766,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -853,6 +855,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -2713,6 +2716,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -3086,6 +3090,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -3117,7 +3122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &500545054
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3573,6 +3578,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -3609,6 +3615,51 @@ MonoBehaviour:
   - {fileID: 1528844032}
   - {fileID: 1201426621}
   coinIndex: 1
+--- !u!1 &605193664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 605193666}
+  - component: {fileID: 605193665}
+  m_Layer: 0
+  m_Name: MainManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &605193665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605193664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c364fdf98f176154cac6c9b8fe6bdd51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+--- !u!4 &605193666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605193664}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5457716, y: 1.7637526, z: -0.04938594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4777,6 +4828,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 2
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions:
   - {fileID: 20610361}
   - {fileID: 2087115968}
@@ -5464,6 +5516,7 @@ MonoBehaviour:
   lettuceUnlocked: 0
   tomatoPadlock: {fileID: 0}
   lettucePadlock: {fileID: 0}
+  testingCustomers: 0
 --- !u!225 &1040490731
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5817,6 +5870,7 @@ MonoBehaviour:
   lettuceUnlocked: 0
   tomatoPadlock: {fileID: 0}
   lettucePadlock: {fileID: 0}
+  testingCustomers: 0
 --- !u!1 &1101129249
 GameObject:
   m_ObjectHideFlags: 0
@@ -6196,6 +6250,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -6868,6 +6923,7 @@ MonoBehaviour:
   lettuceUnlocked: 0
   tomatoPadlock: {fileID: 1758233449417043453}
   lettucePadlock: {fileID: 366440221}
+  testingCustomers: 0
 --- !u!4 &1425009565
 Transform:
   m_ObjectHideFlags: 0
@@ -7530,6 +7586,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -7745,6 +7802,7 @@ MonoBehaviour:
   lettuceUnlocked: 0
   tomatoPadlock: {fileID: 0}
   lettucePadlock: {fileID: 0}
+  testingCustomers: 0
 --- !u!225 &1510905731
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -8371,6 +8429,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -8535,6 +8594,7 @@ MonoBehaviour:
   lettuceUnlocked: 0
   tomatoPadlock: {fileID: 0}
   lettucePadlock: {fileID: 0}
+  testingCustomers: 0
 --- !u!114 &1606673529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9191,6 +9251,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: position1Food
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -9576,6 +9637,7 @@ MonoBehaviour:
   lettuceUnlocked: 0
   tomatoPadlock: {fileID: 0}
   lettucePadlock: {fileID: 0}
+  testingCustomers: 0
 --- !u!1 &1798742453
 GameObject:
   m_ObjectHideFlags: 0
@@ -10885,6 +10947,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -11011,6 +11074,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -11419,6 +11483,7 @@ MonoBehaviour:
   lettuceUnlocked: 0
   tomatoPadlock: {fileID: 0}
   lettucePadlock: {fileID: 0}
+  testingCustomers: 0
 --- !u!114 &2024610769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11595,6 +11660,7 @@ MonoBehaviour:
   lettuceUnlocked: 0
   tomatoPadlock: {fileID: 0}
   lettucePadlock: {fileID: 0}
+  testingCustomers: 0
 --- !u!114 &2024694481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12050,6 +12116,7 @@ MonoBehaviour:
   m_remainingSpawnTimer: 0
   orderLocationID: 
   MyIndexFood: 0
+  MyIndexDrinks: 0
   foodPositions: []
   drinkPositions: []
   foodTick1: {fileID: 0}
@@ -13151,3 +13218,4 @@ SceneRoots:
   - {fileID: 2117929706}
   - {fileID: 809672267}
   - {fileID: 1050588912}
+  - {fileID: 605193666}

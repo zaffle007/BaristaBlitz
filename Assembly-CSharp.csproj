@@ -47,6 +47,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.59f2\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MainManager.cs" />
     <Compile Include="Assets\ICupDropArea.cs" />
     <Compile Include="Assets\ItemSlot.cs" />
     <Compile Include="Assets\OrderValidation.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Assets\SceneController.cs" />
     <Compile Include="Assets\MilkJugCode.cs" />
     <Compile Include="Assets\GameStateManger.cs" />
+    <Compile Include="Assets\TextDisplay.cs" />
     <Compile Include="Assets\AppearItem.cs" />
     <Compile Include="Assets\CustomerScript.cs" />
     <Compile Include="Assets\CustomerTimer.cs" />
